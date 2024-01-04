@@ -1,2 +1,2 @@
 # ChessProject
-Chess Engine + GUI
+Chess Engine + GUI following: https://www.youtube.com/playlist?list=PLOJzCFLZdG4zk5d-1_ah2B4kqZSeIlWtt
