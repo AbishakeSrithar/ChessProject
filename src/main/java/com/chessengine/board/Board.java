@@ -4,10 +4,7 @@ import com.chessengine.Alliance;
 import com.chessengine.pieces.*;
 import com.google.common.collect.ImmutableList;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Board {
 
@@ -28,20 +25,13 @@ public class Board {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         for (int i = 0; i < BoardUtils.NUM_TILES; i++) {
-            final String tileText = prettyPrint(this.gameBoard.get(i));
+            final String tileText = this.gameBoard.get(i).toString();
             builder.append(String.format("%3s", tileText));
             if ((i + 1) % BoardUtils.NUM_TILES_PER_ROW == 0) {
                 builder.append("\n");
             }
         }
         return builder.toString();
-    }
-
-    private static String prettyPrint(final Tile tile) {
-        if(tile.isTileOccupied()) {
-            return tile.getPiece().getPieceAlliance().isBlack() ? tile.toString().toLowerCase() : tile.toString();
-        }
-        return tile.toString();
     }
 
     private Collection<Move> calculateLegalMoves(final Collection<Piece> pieces) {
@@ -133,7 +123,7 @@ public class Board {
         Alliance nextMoveMaker;
 
         public Builder() {
-
+            this.boardConfig = new HashMap<>();
         }
 
         public Builder setPiece(final Piece piece) {

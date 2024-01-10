@@ -69,4 +69,9 @@ public class King extends Piece {
     private static boolean isEightRowExclusion(final int currentPosition, final int candidateOffSet) { // Not in video but seems like it should be here?
         return BoardUtils.EIGHTH_ROW[currentPosition] && (candidateOffSet == 7 || candidateOffSet == 8 || candidateOffSet == 9);
     }
+
+    @Override
+    public String toString() {
+        return PieceType.KING.toString();
+    }
 }
