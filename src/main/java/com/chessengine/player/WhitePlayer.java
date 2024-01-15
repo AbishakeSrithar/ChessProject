@@ -1,5 +1,6 @@
 package com.chessengine.player;
 
+import com.chessengine.Alliance;
 import com.chessengine.board.Board;
 import com.chessengine.board.Move;
 import com.chessengine.pieces.Piece;
@@ -17,5 +18,15 @@ public class WhitePlayer extends Player {
     @Override
     public Collection<Piece> getActivePieces() {
         return this.board.getWhitePieces();
+    }
+
+    @Override
+    public Alliance getAlliance() {
+        return Alliance.WHITE;
+    }
+
+    @Override
+    public Player getOpponent() {
+        return this.board.whitePlayer();
     }
 }
