@@ -49,19 +49,30 @@ public abstract class Player {
     public boolean isMoveLegal(final Move move) {
         return this.legalMoves.contains(move);
     }
-    //TODO: To Be Implemented
+
     public boolean isInCheck() {
         return this.isInCheck;
     }
 
     public boolean isInCheckMate() {
-        return false;
+        return this.isInCheck && !hasEscapeMoves();
     }
 
     public boolean isInStaleMate() {
+        return !this.isInCheck && !hasEscapeMoves();
+    }
+
+    protected boolean hasEscapeMoves() {
+        for (final Move move : this.legalMoves) {
+            final MoveTransition transition = makeMove(move);
+            if (transition.getMoveStatus().isDone()) {
+                return true;
+            }
+        }
         return false;
     }
 
+    //TODO: To Be Implemented
     public boolean isCastled() {
         return false;
     }
