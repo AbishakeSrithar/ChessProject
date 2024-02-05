@@ -6,6 +6,7 @@ import com.chessengine.board.Move;
 import com.chessengine.pieces.King;
 import com.chessengine.pieces.Piece;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +24,7 @@ public abstract class Player {
            final Collection<Move> opponentMoves) {
         this.board = board;
         this.playerKing = establishKing();
-        this.legalMoves = legalMoves;
+        this.legalMoves = ImmutableList.copyOf(Iterables.concat(legalMoves, calculateKingCastles(legalMoves, opponentMoves)));
         this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePosition(), opponentMoves).isEmpty();
     }
 
