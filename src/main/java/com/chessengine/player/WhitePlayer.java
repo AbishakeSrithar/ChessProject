@@ -44,7 +44,7 @@ public class WhitePlayer extends Player {
         if (this.playerKing.isFirstMove() && !this.isInCheck()) {
             if (!this.board.getTile(61).isTileOccupied() &&
                 !this.board.getTile(62).isTileOccupied()) {
-
+                // White's King side castle
                 final Tile rookTile = this.board.getTile(63);
                 if (rookTile.isTileOccupied() && rookTile.getPiece().isFirstMove()) {
                     if (Player.calculateAttacksOnTile(61, opponentsLegals).isEmpty() &&
@@ -55,6 +55,7 @@ public class WhitePlayer extends Player {
                     }
                 }
             }
+            // White's Queen side castle
             if (!this.board.getTile(59).isTileOccupied() &&
                 !this.board.getTile(58).isTileOccupied() &&
                 !this.board.getTile(57).isTileOccupied()) {
