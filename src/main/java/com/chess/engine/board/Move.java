@@ -1,10 +1,8 @@
-package com.chessengine.board;
+package com.chess.engine.board;
 
-import com.chessengine.board.Board.Builder;
-import com.chessengine.pieces.King;
-import com.chessengine.pieces.Pawn;
-import com.chessengine.pieces.Piece;
-import com.chessengine.pieces.Rook;
+import com.chess.engine.pieces.Pawn;
+import com.chess.engine.pieces.Piece;
+import com.chess.engine.pieces.Rook;
 
 public abstract class Move {
 
@@ -65,7 +63,7 @@ public abstract class Move {
     }
 
     public Board execute() {
-        final Builder builder = new Builder();
+        final Board.Builder builder = new Board.Builder();
 
         for (final Piece piece : this.board.currentPlayer().getActivePieces()) {
             // TODO: Hashcode and equals for pieces
@@ -163,7 +161,7 @@ public abstract class Move {
 
         @Override
         public Board execute() {
-            final Builder builder = new Builder();
+            final Board.Builder builder = new Board.Builder();
 
             for (final Piece piece : this.board.currentPlayer().getActivePieces()) {
                 // TODO: Hashcode and equals for pieces
@@ -214,7 +212,7 @@ public abstract class Move {
 
         @Override
         public Board execute() {
-            final Builder builder = new Builder();
+            final Board.Builder builder = new Board.Builder();
             for (final Piece piece : this.board.currentPlayer().getActivePieces()) {
                 // TODO: Hashcode and equals for pieces
                 if (!this.movedPiece.equals(piece) && !this.castleRook.equals(piece)) {

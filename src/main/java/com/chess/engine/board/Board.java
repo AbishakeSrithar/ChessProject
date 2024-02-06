@@ -1,10 +1,10 @@
-package com.chessengine.board;
+package com.chess.engine.board;
 
-import com.chessengine.Alliance;
-import com.chessengine.pieces.*;
-import com.chessengine.player.BlackPlayer;
-import com.chessengine.player.Player;
-import com.chessengine.player.WhitePlayer;
+import com.chess.engine.Alliance;
+import com.chess.engine.pieces.*;
+import com.chess.engine.player.BlackPlayer;
+import com.chess.engine.player.Player;
+import com.chess.engine.player.WhitePlayer;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 

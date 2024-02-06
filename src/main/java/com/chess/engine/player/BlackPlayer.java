@@ -1,13 +1,13 @@
-package com.chessengine.player;
+package com.chess.engine.player;
 
-import com.chessengine.Alliance;
-import com.chessengine.board.Board;
-import com.chessengine.board.Move;
-import com.chessengine.board.Move.KingSideCastleMove;
-import com.chessengine.board.Move.QueenSideCastleMove;
-import com.chessengine.board.Tile;
-import com.chessengine.pieces.Piece;
-import com.chessengine.pieces.Rook;
+import com.chess.engine.Alliance;
+import com.chess.engine.board.Board;
+import com.chess.engine.board.Tile;
+import com.chess.engine.pieces.Piece;
+import com.chess.engine.pieces.Rook;
+import com.chess.engine.board.Move;
+import com.chess.engine.board.Move.KingSideCastleMove;
+import com.chess.engine.board.Move.QueenSideCastleMove;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
@@ -48,8 +48,8 @@ public class BlackPlayer extends Player {
 
                 final Tile rookTile = this.board.getTile(7);
                 if (rookTile.isTileOccupied() && rookTile.getPiece().isFirstMove()) {
-                    if (Player.calculateAttacksOnTile(5, opponentsLegals).isEmpty() &&
-                            Player.calculateAttacksOnTile(6, opponentsLegals).isEmpty() &&
+                    if (calculateAttacksOnTile(5, opponentsLegals).isEmpty() &&
+                            calculateAttacksOnTile(6, opponentsLegals).isEmpty() &&
                             rookTile.getPiece().getPieceType().isRook()) {
                         kingCastles.add(new KingSideCastleMove(this.board,
                                                                this.playerKing,

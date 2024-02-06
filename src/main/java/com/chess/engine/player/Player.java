@@ -1,10 +1,10 @@
-package com.chessengine.player;
+package com.chess.engine.player;
 
-import com.chessengine.Alliance;
-import com.chessengine.board.Board;
-import com.chessengine.board.Move;
-import com.chessengine.pieces.King;
-import com.chessengine.pieces.Piece;
+import com.chess.engine.Alliance;
+import com.chess.engine.board.Board;
+import com.chess.engine.pieces.King;
+import com.chess.engine.pieces.Piece;
+import com.chess.engine.board.Move;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 

@@ -1,12 +1,12 @@
-package com.chessengine.pieces;
+package com.chess.engine.pieces;
 
-import com.chessengine.Alliance;
-import com.chessengine.board.Board;
-import com.chessengine.board.BoardUtils;
-import com.chessengine.board.Move;
-import com.chessengine.board.Move.AttackMove;
-import com.chessengine.board.Move.MajorMove;
-import com.chessengine.board.Tile;
+import com.chess.engine.Alliance;
+import com.chess.engine.board.Board;
+import com.chess.engine.board.BoardUtils;
+import com.chess.engine.board.Move;
+import com.chess.engine.board.Move.AttackMove;
+import com.chess.engine.board.Move.MajorMove;
+import com.chess.engine.board.Tile;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;

@@ -1,9 +1,7 @@
-package com.chessengine.player;
+package com.chess.engine.player;
 
-import com.chessengine.board.Board;
-import com.chessengine.board.Move;
-
-import java.util.concurrent.Future;
+import com.chess.engine.board.Board;
+import com.chess.engine.board.Move;
 
 public class MoveTransition {
 

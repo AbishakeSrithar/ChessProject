@@ -1,4 +1,4 @@
-package com.chessengine.board;
+package com.chess.engine.board;
 
 public class BoardUtils {
     public static final boolean[] FIRST_COLUMN = initColumn(0);
