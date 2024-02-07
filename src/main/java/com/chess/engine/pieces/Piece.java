@@ -96,7 +96,7 @@ public abstract class Piece {
                 return true;
             }
         },
-        KNIGHT("K") {
+        KNIGHT("N") {
             @Override
             public boolean isKing() {
                 return false;
