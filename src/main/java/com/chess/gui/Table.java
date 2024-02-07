@@ -18,6 +18,10 @@ public class Table {
     private final static Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 350);
     private final static Dimension TILE_PANEL_DIMENSION = new Dimension(10, 10);
 
+    private final Color lightTileColor = Color.decode("#F2F3F4");
+
+    private final Color darkTileColor = Color.decode("#21618C");
+
     public Table() {
         this.gameFrame = new JFrame("Jchess");
         this.gameFrame.setLayout(new BorderLayout());
@@ -49,6 +53,17 @@ public class Table {
         });
         fileMenu.add(openPGN);
 
+        final JMenuItem exitMenuItem = new JMenuItem("Exit");
+
+        exitMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Application Exited!");
+                System.exit(0);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+
         return fileMenu;
     }
 
@@ -56,7 +71,7 @@ public class Table {
         final List<TilePanel> boardTiles;
 
         BoardPanel() {
-            super( new GridLayout(8,8));
+            super(new GridLayout(8, 8));
             this.boardTiles = new ArrayList<>();
             for (int i = 0; i < BoardUtils.NUM_TILES; i++) {
                 final TilePanel tilePanel = new TilePanel(this, i);
@@ -82,9 +97,18 @@ public class Table {
             validate();
         }
 
+        private void assignTileColor() {
+            if (BoardUtils.FIRST_ROW[this.tileId] ||
+                    BoardUtils.THIRD_ROW[this.tileId] ||
+                    BoardUtils.FIFTH_ROW[this.tileId] ||
+                    BoardUtils.SEVENTH_ROW[this.tileId]) {
+                setBackground((this.tileId % 2 == 0 ? lightTileColor : darkTileColor));
+            } else if (BoardUtils.SECOND_ROW[this.tileId] ||
+                    BoardUtils.FOURTH_ROW[this.tileId] ||
+                    BoardUtils.SIXTH_ROW[this.tileId] ||
+                    BoardUtils.EIGHTH_ROW[this.tileId]) {
+                setBackground((this.tileId % 2 != 0 ? lightTileColor : darkTileColor));
+            }
+        }
     }
-
-    private void assignTileColor() {
-    }
-
 }
