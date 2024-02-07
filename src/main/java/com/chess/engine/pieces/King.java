@@ -60,19 +60,19 @@ public class King extends Piece {
     }
 
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffSet) {
-        return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffSet == -9 || candidateOffSet == -1 || candidateOffSet == 7);
+        return BoardUtils.FIRST_FILE[currentPosition] && (candidateOffSet == -9 || candidateOffSet == -1 || candidateOffSet == 7);
     }
 
     private static boolean isEightColumnExclusion(final int currentPosition, final int candidateOffSet) {
-        return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffSet == -7 || candidateOffSet == 1 || candidateOffSet == 9);
+        return BoardUtils.EIGHTH_FILE[currentPosition] && (candidateOffSet == -7 || candidateOffSet == 1 || candidateOffSet == 9);
     }
 
     private static boolean isFirstRowExclusion(final int currentPosition, final int candidateOffSet) { // Not in video but seems like it should be here?
-        return BoardUtils.FIRST_ROW[currentPosition] && (candidateOffSet == -9 || candidateOffSet == -8 || candidateOffSet == -7);
+        return BoardUtils.EIGHTH_RANK[currentPosition] && (candidateOffSet == -9 || candidateOffSet == -8 || candidateOffSet == -7);
     }
 
     private static boolean isEightRowExclusion(final int currentPosition, final int candidateOffSet) { // Not in video but seems like it should be here?
-        return BoardUtils.EIGHTH_ROW[currentPosition] && (candidateOffSet == 7 || candidateOffSet == 8 || candidateOffSet == 9);
+        return BoardUtils.FIRST_RANK[currentPosition] && (candidateOffSet == 7 || candidateOffSet == 8 || candidateOffSet == 9);
     }
 
     @Override

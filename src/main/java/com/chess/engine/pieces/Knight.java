@@ -59,19 +59,19 @@ public class Knight extends Piece {
     }
 
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffSet) {
-        return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffSet == -17 || candidateOffSet == -10 || candidateOffSet == 6 || candidateOffSet == 15);
+        return BoardUtils.FIRST_FILE[currentPosition] && (candidateOffSet == -17 || candidateOffSet == -10 || candidateOffSet == 6 || candidateOffSet == 15);
     }
 
     private static boolean isSecondColumnExclusion(final int currentPosition, final int candidateOffSet) {
-        return BoardUtils.SECOND_COLUMN[currentPosition] && (candidateOffSet == -10 || candidateOffSet == 6);
+        return BoardUtils.SECOND_FILE[currentPosition] && (candidateOffSet == -10 || candidateOffSet == 6);
     }
 
     private static boolean isSeventhColumnExclusion(final int currentPosition, final int candidateOffSet) {
-        return BoardUtils.SEVENTH_COLUMN[currentPosition] && (candidateOffSet == -6 || candidateOffSet == 10);
+        return BoardUtils.SEVENTH_FILE[currentPosition] && (candidateOffSet == -6 || candidateOffSet == 10);
     }
 
     private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffSet) {
-        return BoardUtils.EIGHTH_COLUMN[currentPosition] && ((candidateOffSet == -15) || (candidateOffSet == -6) || (candidateOffSet == 10) || (candidateOffSet == 17));
+        return BoardUtils.EIGHTH_FILE[currentPosition] && ((candidateOffSet == -15) || (candidateOffSet == -6) || (candidateOffSet == 10) || (candidateOffSet == 17));
     }
 
     @Override
