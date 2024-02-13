@@ -29,7 +29,7 @@ public class Board {
         final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.whitePieces);
 
         this.whitePlayer = new WhitePlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
-        this.blackPlayer = new BlackPlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
+        this.blackPlayer = new BlackPlayer(this, blackStandardLegalMoves, whiteStandardLegalMoves);
         this.currentPlayer = builder.nextMoveMaker.choosePlayer(this.whitePlayer, this.blackPlayer);
     }
 
@@ -67,6 +67,8 @@ public class Board {
         final List<Move> legalMoves = new ArrayList<>();
 
         for (final Piece piece : pieces) {
+//            System.out.println(piece.getPieceType().toString());
+//            System.out.println("*********");
             legalMoves.addAll(piece.calculateLegalMoves(this));
         }
         return ImmutableList.copyOf(legalMoves);
@@ -150,6 +152,9 @@ public class Board {
     }
 
     public Iterable<Move> getAllLegalMoves() {
+        System.out.println("White and Black Legal Moves size");
+        System.out.println(this.whitePlayer.getLegalMoves().size());
+        System.out.println(this.blackPlayer.getLegalMoves().size());
         return Iterables.unmodifiableIterable(Iterables.concat(this.whitePlayer.getLegalMoves(), this.blackPlayer.getLegalMoves()));
     }
 

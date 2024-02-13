@@ -285,12 +285,18 @@ public abstract class Move {
         public static Move createMove(final Board board,
                                       final int currentCoordinate,
                                       final int destinationCoordinate) {
+            System.out.println("ENTER");
             for (final Move move : board.getAllLegalMoves()) {
+                System.out.println(move.getMovedPiece());
+                System.out.println(move.getMovedPiece().getPieceAlliance());
+                System.out.println(move.getCurrentCoordinate());
+                System.out.println(move.getDestinationCoordinates());
                 if (move.getCurrentCoordinate() == currentCoordinate &&
                 move.getDestinationCoordinates() == destinationCoordinate) {
                     return move;
                 }
             }
+            System.out.println("well fuck");
             return NULL_MOVE;
         }
     }

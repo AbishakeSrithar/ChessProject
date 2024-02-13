@@ -56,6 +56,12 @@ public abstract class Player {
     }
 
     public boolean isMoveLegal(final Move move) {
+//        System.out.println("isMoveLegal");
+        for (final Move move1 : this.legalMoves) {
+//            System.out.printf("PieceType: %s %n", move.getMovedPiece().getPieceType().toString());
+//            System.out.printf("Current: %s %n", move.getCurrentCoordinate());
+//            System.out.printf("Destination: %s %n", move.getDestinationCoordinates());
+        }
         return this.legalMoves.contains(move);
     }
 
@@ -87,6 +93,7 @@ public abstract class Player {
     }
 
     public MoveTransition makeMove(final Move move) {
+        System.out.println(move.getDestinationCoordinates());
         if (!isMoveLegal(move)) {
             return new MoveTransition(this.board, move, MoveStatus.ILLEGALMOVE);
         }
