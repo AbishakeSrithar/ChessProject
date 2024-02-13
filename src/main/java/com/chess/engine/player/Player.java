@@ -57,11 +57,11 @@ public abstract class Player {
 
     public boolean isMoveLegal(final Move move) {
 //        System.out.println("isMoveLegal");
-        for (final Move move1 : this.legalMoves) {
+//        for (final Move move1 : this.legalMoves) {
 //            System.out.printf("PieceType: %s %n", move.getMovedPiece().getPieceType().toString());
 //            System.out.printf("Current: %s %n", move.getCurrentCoordinate());
 //            System.out.printf("Destination: %s %n", move.getDestinationCoordinates());
-        }
+//        }
         return this.legalMoves.contains(move);
     }
 

@@ -278,7 +278,7 @@ public class Table {
 
     private void highlightLegals (final Board board) {
             if (highlightLegalMoves) {
-                for (final Move move : pieceLegalMoves(board)) {
+                for (final Move move :   pieceLegalMoves(board)) {
                     if (move.getDestinationCoordinates() == this.tileId) {
                         try {
                             add(new JLabel(new ImageIcon(ImageIO.read(new File("art/misc/green_dot.png")))));

@@ -63,6 +63,7 @@ public abstract class Move {
     }
 
     public Board execute() {
+        System.out.println("*********START");
         final Board.Builder builder = new Board.Builder();
 
         for (final Piece piece : this.board.currentPlayer().getActivePieces()) {
@@ -79,6 +80,8 @@ public abstract class Move {
         // Move the moved piece
         builder.setPiece(this.movedPiece.movePiece(this));
         builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
+        System.out.println(this.board.currentPlayer().getOpponent().getAlliance().toString());
+        System.out.println("*********END");
         return builder.build();
     }
 
