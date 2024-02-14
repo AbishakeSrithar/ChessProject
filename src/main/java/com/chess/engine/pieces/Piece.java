@@ -14,12 +14,14 @@ public abstract class Piece {
     protected final boolean isFirstMove;
     private final int cachedHashCode;
 
-    Piece(final PieceType pieceType, final int piecePosition, final Alliance pieceAlliance) {
+    Piece(final PieceType pieceType,
+          final int piecePosition,
+          final Alliance pieceAlliance,
+          final Boolean isFirstMove) {
         this.pieceType = pieceType;
         this.pieceAlliance = pieceAlliance;
         this.piecePosition = piecePosition;
-        // TODO: Needs updating
-        this.isFirstMove = false;
+        this.isFirstMove = isFirstMove;
         this.cachedHashCode = computeHashCode();
     }
 

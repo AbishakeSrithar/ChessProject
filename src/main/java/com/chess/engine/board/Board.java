@@ -26,7 +26,7 @@ public class Board {
         this.blackPieces = calculateActivePieces(this.gameBoard, Alliance.BLACK);
 
         final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.whitePieces);
-        final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.whitePieces);
+        final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.blackPieces);
 
         this.whitePlayer = new WhitePlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
         this.blackPlayer = new BlackPlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
@@ -153,9 +153,6 @@ public class Board {
     }
 
     public Iterable<Move> getAllLegalMoves() {
-        System.out.println("White and Black Legal Moves size");
-        System.out.println(this.whitePlayer.getLegalMoves().size());
-        System.out.println(this.blackPlayer.getLegalMoves().size());
         return Iterables.unmodifiableIterable(Iterables.concat(this.whitePlayer.getLegalMoves(), this.blackPlayer.getLegalMoves()));
     }
 

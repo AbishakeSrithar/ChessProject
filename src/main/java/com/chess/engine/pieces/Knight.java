@@ -18,37 +18,32 @@ public class Knight extends Piece {
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-17, -15, -10, -6, 6, 10, 15, 17};
 
     public Knight(final int piecePosition, final Alliance pieceAlliance) {
-        super(PieceType.KNIGHT, piecePosition, pieceAlliance);
+        super(PieceType.KNIGHT, piecePosition, pieceAlliance, true);
     }
+    public Knight(final int piecePosition, final Alliance pieceAlliance, final Boolean isFirstMove) {
+        super(PieceType.KNIGHT, piecePosition, pieceAlliance, isFirstMove);
+    }
+
 
     @Override
     public Collection<Move> calculateLegalMoves(final Board board) {
-//        System.out.println("idhflkajdfhaljkdjhfk");
 
         final List<Move> legalMoves = new ArrayList<>();
 
         for (final int currentCandidateOffset : CANDIDATE_MOVE_VECTOR_COORDINATES) {
             final int candidateDestinationCoordinate = this.piecePosition + currentCandidateOffset;
-//            System.out.println(currentCandidateOffset);
-//            System.out.println(this.piecePosition);
-//            System.out.println("Calc Legal Moves Knight");
-//            System.out.println(candidateDestinationCoordinate);
 
             if (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
-//                System.out.println("Calc Legal Moves Knight VALID TILE");
-//                System.out.println(candidateDestinationCoordinate);
+
                 if (isFirstColumnExclusion(this.piecePosition, currentCandidateOffset) ||
                         isSecondColumnExclusion(this.piecePosition, currentCandidateOffset) ||
                         isSeventhColumnExclusion(this.piecePosition, currentCandidateOffset) ||
                         isEighthColumnExclusion(this.piecePosition, currentCandidateOffset)) {
                     continue;
                 }
-//                System.out.println("Calc Legal Moves Knight VALID TILE NOT EX");
-//                System.out.println(candidateDestinationCoordinate);
+
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
                 if (!candidateDestinationTile.isTileOccupied()) {
-//                    System.out.println("Calc Legal Moves Knight VALID TILE NOT EX not occupado");
-//                    System.out.println(candidateDestinationCoordinate);
                     legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                 } else {
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
