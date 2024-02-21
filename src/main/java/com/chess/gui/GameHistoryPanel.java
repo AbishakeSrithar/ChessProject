@@ -1,6 +1,7 @@
 package com.chess.gui;
 
 import com.chess.engine.board.Board;
+import com.chess.engine.board.Move;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,8 +25,40 @@ public class GameHistoryPanel extends JPanel {
         this.setVisible(true);
     }
 
-    void redo(final Board board, final Table.MoveLog moveLog) {
+    void redo(final Board board, final Table.MoveLog moveHistory) {
 
+        int currentRow = 0;
+        this.model.clear();
+        for (final Move move : moveHistory.getMoves()) {
+            final String moveText = move.toString();
+            if (move.getMovedPiece().getPieceAlliance().isWhite()) {
+                this.model.setValueAt(moveText, currentRow, 0);
+            } else if (move.getMovedPiece().getPieceAlliance().isBlack()) {
+                this.model.setValueAt(moveText, currentRow, 1);
+                currentRow++;
+            }
+         }
+
+        if (!moveHistory.getMoves().isEmpty()) {
+            final Move lastMove = moveHistory.getMoves().get(moveHistory.size() - 1);
+            final String moveText = lastMove.toString();
+
+            if (lastMove.getMovedPiece().getPieceAlliance().isWhite()) {
+                this.model.setValueAt(moveText + calculateCheckandCheckMateHash(board), currentRow - 1, 1);
+            }
+        }
+
+        final JScrollBar vertical = scrollPane.getVerticalScrollBar();
+        vertical.setValue(vertical.getMaximum());
+    }
+
+    private String calculateCheckandCheckMateHash(final Board board) {
+        if (board.currentPlayer().isInCheckMate()) {
+            return "#";
+        } else if (board.currentPlayer().isInCheck()) {
+            return "+";
+        }
+        return "";
     }
 
     private static class DataModel extends DefaultTableModel {
@@ -81,6 +114,16 @@ public class GameHistoryPanel extends JPanel {
             }
             // Why would this be only for col 1? Moved here but could be wrong
             fireTableCellUpdated(row, column);
+        }
+
+        @Override
+        public Class<?> getColumnClass(final int column) {
+            return Move.class;
+        }
+
+        @Override
+        public String getColumnName (final int column) {
+            return NAMES[column];
         }
     }
 
