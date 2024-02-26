@@ -8,6 +8,7 @@ import com.chess.engine.board.Move;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -93,11 +94,16 @@ public abstract class Player {
     }
 
     public MoveTransition makeMove(final Move move) {
-        System.out.println(move.getDestinationCoordinates());
+//        System.out.println(move.getDestinationCoordinates());
         if (!isMoveLegal(move)) {
             return new MoveTransition(this.board, move, MoveStatus.ILLEGALMOVE);
         }
         final Board transitionBoard = move.execute();
+
+        System.out.println(transitionBoard);
+        System.out.println(move.getMovedPiece());
+        System.out.println(move.getCurrentCoordinate());
+        System.out.println(move.getDestinationCoordinates());
 
         // Player switches after move is executed
         final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePosition()
