@@ -4,6 +4,8 @@ import com.chess.engine.pieces.Pawn;
 import com.chess.engine.pieces.Piece;
 import com.chess.engine.pieces.Rook;
 
+import java.sql.SQLOutput;
+
 import static com.chess.engine.board.Board.*;
 
 public abstract class Move {
@@ -177,6 +179,7 @@ public abstract class Move {
 
         @Override
         public Board execute() {
+            System.out.println("hi");
             final Builder builder = new Builder();
 
             for (final Piece piece : this.board.currentPlayer().getActivePieces()) {
@@ -196,6 +199,11 @@ public abstract class Move {
             builder.setEnPassantPawn(movedPawn);
             builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
             return builder.build();
+        }
+
+        @Override
+        public String toString() {
+            return BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
         }
     }
 

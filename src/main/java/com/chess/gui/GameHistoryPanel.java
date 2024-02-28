@@ -44,6 +44,8 @@ public class GameHistoryPanel extends JPanel {
             final String moveText = lastMove.toString();
 
             if (lastMove.getMovedPiece().getPieceAlliance().isWhite()) {
+                this.model.setValueAt(moveText + calculateCheckandCheckMateHash(board), currentRow, 0);
+            } else if (lastMove.getMovedPiece().getPieceAlliance().isBlack()) {
                 this.model.setValueAt(moveText + calculateCheckandCheckMateHash(board), currentRow - 1, 1);
             }
         }
@@ -109,11 +111,12 @@ public class GameHistoryPanel extends JPanel {
             }
             if (column == 0) {
                 currentRow.setWhiteMove((String) aValue);
+                fireTableRowsInserted(row, row);
             } else if (column == 1) {
                 currentRow.setBlackMove((String) aValue);
+                fireTableCellUpdated(row, column);
             }
-            // Why would this be only for col 1? Moved here but could be wrong
-            fireTableCellUpdated(row, column);
+
         }
 
         @Override
