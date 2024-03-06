@@ -21,10 +21,14 @@ public class Board {
     private final Player currentPlayer;
     private final Move transitionMove;
 
+    private final Pawn enPassantPawn;
+
     private Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
         this.whitePieces = calculateActivePieces(this.gameBoard, Alliance.WHITE);
         this.blackPieces = calculateActivePieces(this.gameBoard, Alliance.BLACK);
+
+        this.enPassantPawn = builder.enPassantPawn;
 
         final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.whitePieces);
         final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.blackPieces);
@@ -70,8 +74,6 @@ public class Board {
         final List<Move> legalMoves = new ArrayList<>();
 
         for (final Piece piece : pieces) {
-//            System.out.println(piece.getPieceType().toString());
-//            System.out.println("*********");
             legalMoves.addAll(piece.calculateLegalMoves(this));
         }
         return ImmutableList.copyOf(legalMoves);
@@ -79,6 +81,14 @@ public class Board {
 
     public Tile getTile(final int tileCoordinate) {
         return gameBoard.get(tileCoordinate);
+    }
+
+    public Move getTransitionMove() {
+        return this.transitionMove;
+    }
+
+    public Pawn getEnpassantPawn() {
+        return this.enPassantPawn;
     }
 
     private static Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, final Alliance alliance) {

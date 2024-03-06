@@ -242,11 +242,9 @@ public abstract class Move {
 
         @Override
         public Board execute() {
-            System.out.println("hi");
             final Builder builder = new Builder();
 
             for (final Piece piece : this.board.currentPlayer().getActivePieces()) {
-                // TODO: Hashcode and equals for pieces
                 if (!this.movedPiece.equals(piece)) {
                     builder.setPiece(piece);
                 }
