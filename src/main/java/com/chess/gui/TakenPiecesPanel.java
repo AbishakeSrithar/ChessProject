@@ -80,7 +80,7 @@ public class TakenPiecesPanel extends JPanel {
                 final BufferedImage image = ImageIO.read(new File("art/simple/"
                         + takenPiece.getPieceAlliance().toString().charAt(0) + takenPiece.toString() + ".gif"));
                 final ImageIcon icon = new ImageIcon(image);
-                final JLabel imageLabel = new JLabel();
+                final JLabel imageLabel = new JLabel(icon);
                 this.southPanel.add(imageLabel);
             } catch (final IOException e) {
                 e.printStackTrace();
@@ -94,7 +94,7 @@ public class TakenPiecesPanel extends JPanel {
                 final BufferedImage image = ImageIO.read(new File("art/simple/"
                         + takenPiece.getPieceAlliance().toString().charAt(0) + takenPiece.toString() + ".gif"));
                 final ImageIcon icon = new ImageIcon(image);
-                final JLabel imageLabel = new JLabel();
+                final JLabel imageLabel = new JLabel(icon);
                 this.northPanel.add(imageLabel);
             } catch (final IOException e) {
                 e.printStackTrace();
