@@ -8,7 +8,6 @@ import com.chess.engine.board.Move;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -40,7 +39,7 @@ public abstract class Player {
     protected static Collection<Move> calculateAttacksOnTile(int piecePosition, Collection<Move> moves) {
         final List<Move> attackMoves = new ArrayList<>();
         for (final Move move : moves) {
-            if (piecePosition == move.getDestinationCoordinates()) {
+            if (piecePosition == move.getDestinationCoordinate()) {
                 attackMoves.add(move);
             }
         }
@@ -103,7 +102,7 @@ public abstract class Player {
         System.out.println(transitionBoard);
         System.out.println(move.getMovedPiece());
         System.out.println(move.getCurrentCoordinate());
-        System.out.println(move.getDestinationCoordinates());
+        System.out.println(move.getDestinationCoordinate());
 
         // Player switches after move is executed
         final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePosition()
