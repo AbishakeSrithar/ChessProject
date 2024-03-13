@@ -27,6 +27,11 @@ public class WhitePlayer extends Player {
     }
 
     @Override
+    public String toString() {
+        return "White";
+    }
+
+    @Override
     public Alliance getAlliance() {
         return Alliance.WHITE;
     }

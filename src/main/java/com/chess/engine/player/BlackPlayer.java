@@ -26,6 +26,12 @@ public class BlackPlayer extends Player {
         return this.board.getBlackPieces();
     }
 
+
+    @Override
+    public String toString() {
+        return "Black";
+    }
+
     @Override
     public Alliance getAlliance() {
         return Alliance.BLACK;
