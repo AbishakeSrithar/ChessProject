@@ -125,7 +125,7 @@ public class GameHistoryPanel extends JPanel {
         }
 
         @Override
-        public String getColumnName (final int column) {
+        public String getColumnName(final int column) {
             return NAMES[column];
         }
     }
@@ -151,7 +151,7 @@ public class GameHistoryPanel extends JPanel {
         }
 
         public void setBlackMove(final String move) {
-            this.whiteMove = move;
+            this.blackMove = move;
         }
     }
 
