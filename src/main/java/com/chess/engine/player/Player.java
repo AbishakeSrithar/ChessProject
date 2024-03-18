@@ -93,11 +93,6 @@ public abstract class Player {
         }
         final Board transitionBoard = move.execute();
 
-        System.out.println(transitionBoard);
-        System.out.println(move.getMovedPiece());
-        System.out.println(move.getCurrentCoordinate());
-        System.out.println(move.getDestinationCoordinate());
-
         // Player switches after move is executed
         final Collection<Move> kingAttacks = Player.calculateAttacksOnTile(transitionBoard.currentPlayer().getOpponent().getPlayerKing().getPiecePosition()
         , transitionBoard.currentPlayer().legalMoves());
