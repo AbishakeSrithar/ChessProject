@@ -55,6 +55,8 @@ public class MiniMax implements MoveStrategy {
 
         final long executionTime = System.currentTimeMillis() - startTime;
 
+        System.out.println("AI move complete in " + executionTime);
+
         return bestMove;
     }
 
